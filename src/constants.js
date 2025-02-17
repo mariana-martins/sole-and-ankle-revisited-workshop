@@ -16,3 +16,18 @@ export const WEIGHTS = {
   medium: 600,
   bold: 800,
 };
+
+export const BREAKPOINTS = {
+  small: "37.5rem", // phone usage -- equivalent to 600px
+  medium: "59.375rem", // tablet usage -- equivalent to 950px
+  large: "81.25rem", // laptop usage -- equivalent to 1300px
+};
+
+export const theme = {
+  breakpoints: {
+    small: BREAKPOINTS.small,
+    medium: BREAKPOINTS.medium,
+    large: BREAKPOINTS.large,
+  },
+};
+
