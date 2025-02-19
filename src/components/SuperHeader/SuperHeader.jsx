@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { COLORS } from '../../constants';
+import { mediaQueries } from '../../mediaQueries';
 
 import SearchInput from '../SearchInput';
 import UnstyledButton from '../UnstyledButton';
@@ -23,15 +24,32 @@ const SuperHeader = () => {
 };
 
 const Wrapper = styled.div`
+  --height: 40px;
   display: flex;
   align-items: center;
   gap: 24px;
   font-size: 0.875rem;
   color: ${COLORS.gray[300]};
   background-color: ${COLORS.gray[900]};
-  height: 40px;
+  height: var(--height);
   padding-left: 32px;
   padding-right: 32px;
+
+  /* Redefine the height for small and medium screens,
+  and hide all direct children elements. */
+  ${mediaQueries.medium`
+    --height: 4px;
+    > * {
+      display: none;
+    }
+  `}
+
+  ${mediaQueries.small`
+    --height: 4px;
+    > * {
+      display: none;
+    }
+  `}
 `;
 
 const MarketingMessage = styled.span`
