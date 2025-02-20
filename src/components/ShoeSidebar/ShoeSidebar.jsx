@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 import { COLORS, WEIGHTS } from '../../constants';
 
-const Sidebar = () => {
+const Sidebar = ({className}) => {
   return (
-    <Wrapper>
+    <Wrapper className={className}>
       <Link href="/lifestyle">Lifestyle</Link>
       <Link href="/jordan">Jordan</Link>
       <ActiveLink href="/running">Running</ActiveLink>
