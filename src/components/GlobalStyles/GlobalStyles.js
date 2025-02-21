@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
 /* http://meyerweb.com/eric/tools/css/reset/
@@ -72,3 +72,8 @@ html, body, #root {
 `;
 
 export default GlobalStyles;
+
+
+export const hideContent = () => css`
+  display: none;
+`;

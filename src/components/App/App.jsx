@@ -20,10 +20,18 @@ const App = () => {
 };
 
 const Main = styled.main`
-  padding: 64px 32px;
+  --padding-inline: 32px;
+  --padding-block: 64px;
+  padding-block: var(--padding-block);
+  padding-inline: var(--padding-inline);
+
+  ${mediaQueries.medium`
+    --padding-block: 48px;
+  `}
 
   ${mediaQueries.small`
-    padding:48px 16px;
+    --padding-block: 48px;
+    --padding-inline: 16px;
   `}
 `;
 

@@ -7,6 +7,7 @@ import { mediaQueries } from '../../mediaQueries';
 import SearchInput from '../SearchInput';
 import UnstyledButton from '../UnstyledButton';
 import Icon from '../Icon';
+import { hideContent } from '../GlobalStyles/GlobalStyles';
 
 const SuperHeader = () => {
   return (
@@ -40,14 +41,14 @@ const Wrapper = styled.div`
   ${mediaQueries.medium`
     --height: 4px;
     > * {
-      display: none;
+      ${hideContent()}
     }
   `}
 
   ${mediaQueries.small`
     --height: 4px;
     > * {
-      display: none;
+      ${hideContent()}
     }
   `}
 `;
