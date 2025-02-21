@@ -9,6 +9,7 @@ import Select from '../Select';
 import Spacer from '../Spacer';
 import ShoeSidebar from '../ShoeSidebar';
 import ShoeGrid from '../ShoeGrid';
+import { hideContent } from '../GlobalStyles/GlobalStyles';
 
 const ShoeIndex = ({ sortId, setSortId }) => {
   return (
@@ -46,18 +47,28 @@ const ShoeIndex = ({ sortId, setSortId }) => {
  *
  * A flex container that arranges the main and left columns.
  * - Uses a row-reverse layout on larger screens.
- * - Switches to a column-reverse layout on small screens, with no gap.
+ * - Switches to a column-reverse layout on small and medium screens, with no gap.
  */
 const Wrapper = styled.div`
+  --flex-wrap: nowrap;
+  --flex-direction: row-reverse;
+  --gap: 2rem;
   display: flex;
-  flex-direction: row-reverse;
+  flex-wrap: var(--flex-wrap);
+  flex-direction: var(--flex-direction);
   align-items: baseline;
-  gap: 32px;
+  gap: var(--gap);
+
+  ${mediaQueries.medium`
+    --flex-wrap: wrap-reverse;
+    --flex-direction: column-reverse;
+    --gap: 0;
+  `}
 
   ${mediaQueries.small`
-    flex-wrap: wrap;
-    flex-direction: column-reverse;
-    gap: 0
+    --flex-wrap: wrap-reverse;
+    --flex-direction: column-reverse;
+    --gap: 0;
   `}
 `;
 
@@ -66,13 +77,18 @@ const Wrapper = styled.div`
  *
  * Container for the sidebar.
  * - Has a fixed width (248px) on larger screens.
- * - Reverts to default sizing on small screens.
+ * - Reverts to default sizing on small and medium screens.
  */
 const LeftColumn = styled.div`
-  flex-basis: 248px;
+  --flex-basis: 248px;
+  flex-basis: var(--flex-basis);
+
+  ${mediaQueries.medium`
+    --flex-basis: revert;
+  `}
 
   ${mediaQueries.small`
-    flex-basis: revert;
+    --flex-basis: revert;
   `}
 `;
 
@@ -85,6 +101,7 @@ const LeftColumn = styled.div`
  */
 const MainColumn = styled.div`
   flex: 1;
+
   ${mediaQueries.small`
     flex: revert;
   `}
@@ -103,13 +120,20 @@ const Header = styled.header`
  * - On small screens, adds a top margin to create space since the Spacer component is hidden.
  */
 const Title = styled.h2`
+  --margin-top: 8px;
   font-size: 1.5rem;
   font-weight: ${WEIGHTS.medium};
+
+  ${mediaQueries.medium`
+    /* Add some space between the breadcrumbs and the title,
+    since we are hiding the spacer for medium screens. */
+    margin-top: var(--margin-top);
+  `}
 
   ${mediaQueries.small`
     /* Add some space between the breadcrumbs and the title,
     since we are hiding the spacer for small screens. */
-    margin-top: 8px;
+    margin-top: var(--margin-top);
   `}
 `;
 
@@ -121,7 +145,7 @@ const Title = styled.h2`
  */
 const ResponsiveSelect = styled(Select)`
   ${mediaQueries.small`
-    display: none;
+    ${hideContent()}
   `}
 `;
 
@@ -133,11 +157,11 @@ const ResponsiveSelect = styled(Select)`
  */
 const ResponsiveSidebar = styled(ShoeSidebar)`
   ${mediaQueries.medium`
-    display: none;
+    ${hideContent()}
   `}
 
   ${mediaQueries.small`
-    display: none;
+    ${hideContent()}
   `}
 `;
 
@@ -148,8 +172,12 @@ const ResponsiveSidebar = styled(ShoeSidebar)`
  * - Hidden on small screens.
  */
 const ResponsiveSpacer = styled(Spacer)`
+  ${mediaQueries.medium`
+    ${hideContent()}
+  `}
+
   ${mediaQueries.small`
-    display: none;
+    ${hideContent()}
   `}
 `;
 
