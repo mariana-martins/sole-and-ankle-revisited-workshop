@@ -93,7 +93,7 @@ const Box = styled.div`
 const Nav = styled.nav`
   --display: flex;
   display: var(--display);
-  gap: 48px;
+  gap: clamp(1rem, 9.2vw - 4.5rem, 3.5rem);
   margin: 0px 48px;
 
   // Hides navigation menu on small, and medium screens
