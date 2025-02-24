@@ -10,8 +10,6 @@ import Button from '../UnstyledButton'
 import Icon from '../Icon';
 
 const Header = () => {
-  const [showMobileMenu, setShowMobileMenu] = React.useState(false);
-
   return (
     <header>
       <SuperHeader />
@@ -48,21 +46,9 @@ const Header = () => {
               strokeWidth="2"
             />
           </Button>
-          <Button onClick={() => setShowMobileMenu(true)}>
-            <Icon
-              id={"menu"}
-              size="24px"
-              color={COLORS.gray[900]}
-              strokeWidth="2"
-            />
-          </Button>
+          <MobileMenu />
         </Box>
       </MainHeader>
-
-      <MobileMenu
-        isOpen={showMobileMenu}
-        onDismiss={() => setShowMobileMenu(false)}
-      />
     </header>
   );
 };
